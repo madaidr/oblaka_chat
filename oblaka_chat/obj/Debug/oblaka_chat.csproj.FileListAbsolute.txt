@@ -76,3 +76,5 @@ C:\Users\madaidr\source\repos\oblaka_chat\oblaka_chat\obj\Debug\oblaka_chat.cspr
 C:\Users\madaidr\source\repos\oblaka_chat\oblaka_chat\obj\Debug\oblaka_chat.csproj.CopyComplete
 C:\Users\madaidr\source\repos\oblaka_chat\oblaka_chat\obj\Debug\oblaka_chat.dll
 C:\Users\madaidr\source\repos\oblaka_chat\oblaka_chat\obj\Debug\oblaka_chat.pdb
+C:\Users\madaidr\source\repos\oblaka_chat\oblaka_chat\bin\Microsoft.Owin.Hosting.dll
+C:\Users\madaidr\source\repos\oblaka_chat\oblaka_chat\bin\Microsoft.Owin.Hosting.xml

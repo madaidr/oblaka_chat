@@ -21,6 +21,7 @@
         <input type="button" id="sign" value="Войти" />
         <hr>
         <input type="button" id="reg_show" value="Зарегистрироваться" />
+
         <input id="hdId" type="hidden" />
         <input id="username" type="hidden" />
     </div>
@@ -34,6 +35,7 @@
         <input type="button" id="reg" value="Создать аккаунт" />
         <hr>
         <input type="button" id="sign_show" value="Войти" />
+        <p>Пароль и логин не должен содержать: !,$,(,),*,+,.,<,>,?,[,\,],^,{,|,}</p>
     </div>
     <div id="chatBody" style="display:none;">
         <h1>Чат-комната</h1>
@@ -117,19 +119,30 @@
             // Открываем соединение
             $.connection.hub.start().done(function () {
                 // обработка входа
-                $('#sign').click(function () {
+                   $('#sign').click(function () {
                     chat.server.sign($('#name').val(), $('#psw').val());
                 });
                 // обработка рег
                 $('#reg').click(function () {
-                    if ($('#reg_name').val().length==0) {
-                        $('#reg_name').css('border', '2px solid red');
+                    var letters = /[\!\$\(\)\*\+\.\<\>\?\[\\\]\^\{\|\}]/;
+                    //var letters1 = /[^A-Za-z0-9_А-Яа-я]/;
+                    var name = $('#reg_name');
+                    var psw = $('#reg_psw');
+                    name.css('border', '1px solid black');
+                    psw.css('border', '1px solid black');
+                	var name =$('#reg_name');
+                	var psw = $('#reg_psw');
+                    if (name.val().length == 0 || name.val().length > 254 || letters.test(name.val()) ) {
+                        name.css('border', '2px solid red');
+                        if (psw.val().length == 0 || psw.val().length > 254 || letters.test(psw.val())) {
+                            psw.css('border', '2px solid red');
+                        }
                     }
-                    if ($('#reg_psw').val().length == 0) {
-                        $('#reg_psw').css('border', '2px solid red');
+                    else if (psw.val().length == 0 || psw.val().length > 254 || letters.test(psw.val())) {
+                    psw.css('border', '2px solid red');
                     }
-                    if (($('#reg_name').val().length != 0) && ($('#reg_psw').val().length != 0)) {
-                        chat.server.reg($('#reg_name').val(), $('#reg_psw').val());
+                    else {
+                            chat.server.reg(name.val(), psw.val());                    
                     }
 
                 });
